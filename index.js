@@ -58,6 +58,8 @@ function writeToFile(fileName, data) {}
 
 // TODO: Create a function to initialize app
 function init() {
+  // Prompts the user for input according to the questions specified above
+  // Writes the output to a README file within the /app directory
   inquirer.prompt(questions).then((response) => {
     fs.writeFile(
       "app/README.md",
