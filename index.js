@@ -1,4 +1,5 @@
 // TODO: Include packages needed for this application
+const generateMarkdown = require("./utils/generateMarkdown.js");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
@@ -59,39 +60,8 @@ function writeToFile(fileName, data) {}
 function init() {
   inquirer.prompt(questions).then((response) => {
     fs.writeFile(
-      "practice/README.md",
-      `
-# ${response.title}
-
-## Description
-${response.description}
-
-## Table of Contents (Optional)}
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-
-## Installation
-${response.installation}
-
-## Usage
-${response.usage}
-
-## License
-${response.license}
-
-## How to Contribute
-${response.contribution}
-
-## Tests
-${response.test}
-
-## Questions
-email: [${response.email}](${response.email})
-Github: [${response.github}](https://github.com/${response.github})
-
-`,
+      "app/README.md",
+      generateMarkdown(response),
       function (err) {
         if (err) {
           return console.log(err);
